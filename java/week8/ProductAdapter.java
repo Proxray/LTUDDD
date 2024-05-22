@@ -1,6 +1,7 @@
 package week8;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,15 @@ public class ProductAdapter extends BaseAdapter {
             holder.priceTv.setText(product.getPrice());
             holder.styleidTv.setText(product.getStyledId());
         }
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Product product=mProductList.get(position);
+                Intent intent=new Intent(mContext,Tuan6DetailActivity.class);
+                intent.putExtra("PRODUCT",product);
+                mContext.startActivity(intent);
+            }
+        });
         return convertView;
     }
     static class ViewHolderT61{
